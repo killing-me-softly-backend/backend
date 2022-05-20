@@ -1,0 +1,1 @@
+{"version":3,"file":"knex.load.config.js","sourceRoot":"","sources":["../../../src/utils/knex.load.config.ts"],"names":[],"mappings":";;;;;;;;;;;;;;;;;;;;;;AAAA,yDAA2C;AAE3C,SAAgB,cAAc,CAAC,UAAmB;;IAChD,MAAM,IAAI,GAAG,MAAA,UAAU,aAAV,UAAU,cAAV,UAAU,GAAI,OAAO,CAAC,GAAG,CAAC,QAAQ,mCAAI,aAAa,CAAC;IACjE,OAAO,QAAQ,CAAC,IAAI,CAAC,CAAC;AACxB,CAAC;AAHD,wCAGC"}

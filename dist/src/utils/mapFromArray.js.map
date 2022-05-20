@@ -1,0 +1,1 @@
+{"version":3,"file":"mapFromArray.js","sourceRoot":"","sources":["../../../src/utils/mapFromArray.ts"],"names":[],"mappings":";;;AAAA,SAAgB,YAAY,CAC1B,KAAU,EACV,WAAsC;IAEtC,MAAM,GAAG,GAA2C,EAAE,CAAC;IAEvD,KAAK,MAAM,IAAI,IAAI,KAAK,EAAE;QACxB,GAAG,CAAC,WAAW,CAAC,IAAI,CAAC,CAAC,GAAG,IAAI,CAAC;KAC/B;IAED,OAAO,GAAG,CAAC;AACb,CAAC;AAXD,oCAWC"}
