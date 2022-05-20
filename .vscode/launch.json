@@ -1,0 +1,17 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "debug",
+      "type": "node",
+      "preLaunchTask": "build",
+      "request": "launch",
+      "program": "${workspaceFolder}/dist/main.js",
+      "sourceMaps": true,
+      "smartStep": true,
+      "console": "internalConsole",
+      "outputCapture": "std",
+      "internalConsoleOptions": "openOnFirstSessionStart"
+    }
+  ]
+}

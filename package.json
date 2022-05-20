@@ -4,13 +4,13 @@
   "description": "",
   "author": "Eyal Azran",
   "scripts": {
-    "prebuild": "rm -rf dist",
+    "prebuild": "rm -rf dist && tsc",
     "build": "nest build",
     "prestart": "npm run build",
     "start": "nest start",
     "start:dev": "nest start --watch",
     "start:debug": "nest start --debug --watch",
-    "start:prod": "node dist/main"
+    "start:prod": "node dist/main.js"
   },
   "devDependencies": {
     "@golevelup/nestjs-testing": "^0.1.2",

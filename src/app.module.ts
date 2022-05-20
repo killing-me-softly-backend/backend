@@ -3,6 +3,7 @@ import { json } from 'express';
 import { WinstonModule } from 'nest-winston';
 import { AppConfigModule, AppConfigService } from './config';
 import { DalModule } from './dal/dal.module';
+import { CatsModule } from './entities/cats/cats.module';
 import { loggerOptionsFactory } from './logger';
 
 @Module({
@@ -15,6 +16,7 @@ import { loggerOptionsFactory } from './logger';
       inject: [AppConfigService],
     }),
     DalModule,
+    CatsModule,
   ],
 })
 export class AppModule {

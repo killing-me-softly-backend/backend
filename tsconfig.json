@@ -8,13 +8,10 @@
     "allowSyntheticDefaultImports": true,
     "target": "es2017",
     "sourceMap": true,
+    "outDir": "./dist",
     "baseUrl": "./",
     "incremental": true,
-    "skipLibCheck": true,
-    "outDir": "dist",
-    "rootDir": ".",
-    "strict": false,
-    "esModuleInterop": true
+    "skipLibCheck": true
   },
-  "include": ["src/**/*", "knexfile.ts"]
+  "include": ["src/**/*"]
 }
