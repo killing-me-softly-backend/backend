@@ -1,11 +1,10 @@
-import { Inject, Injectable, NestMiddleware } from "@nestjs/common";
-import { Request, Response, NextFunction } from "express";
-import { WINSTON_MODULE_PROVIDER } from "nest-winston";
-import { Logger } from "winston";
-import { Configuration, LoggerConfig } from "../config/config.factory";
-import { getDurationInMilliseconds } from "./getDurationInMilliseconds";
-import * as _ from "lodash";
-import { AppConfigService } from "../config";
+import { Inject, Injectable, NestMiddleware } from '@nestjs/common';
+import { NextFunction, Request, Response } from 'express';
+import { WINSTON_MODULE_PROVIDER } from 'nest-winston';
+import { Logger } from 'winston';
+import { AppConfigService } from '../config';
+import { getDurationInMilliseconds } from './getDurationInMilliseconds';
+
 @Injectable()
 export class RequestDurationMiddleware implements NestMiddleware {
   constructor(
@@ -21,29 +20,11 @@ export class RequestDurationMiddleware implements NestMiddleware {
       const durationInMilliseconds = getDurationInMilliseconds(start);
       let operation: string;
 
-      if (!_.isNil(req?.graphql?.subOperation)) {
-        // graphql request
-        if (req?.graphql?.subOperation === "__schema") {
-          if (loggerConfig.logging.logGraphqlIntrospectionRequests) {
-            operation = "introspection";
-          }
-        } else {
-          if (loggerConfig.logging.logGraphqlEntitiesRequests) {
-            operation = req?.graphql?.subOperation;
-          }
-        }
-      } else {
-        if (loggerConfig.logging.logNonGraphqlRequests) {
-          operation = `${req.url} ${req.method}`;
-        }
-      }
-      if (operation) {
-        logger.info(
-          `request for ${operation} took ${durationInMilliseconds}[ms]`
-        );
-      }
+      logger.info(
+        `method ${req?.method} endpoint ${req?.path} took ${durationInMilliseconds}[ms]`
+      );
     }
-    res.on("finish", () => {
+    res.on('finish', () => {
       logDuration();
     });
     next();

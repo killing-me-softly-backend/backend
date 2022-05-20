@@ -1,7 +1,7 @@
-import { NestMiddleware } from "@nestjs/common";
-import { Request, Response, NextFunction } from "express";
-import { Logger } from "winston";
-import { AppConfigService } from "../config";
+import { NestMiddleware } from '@nestjs/common';
+import { NextFunction, Request, Response } from 'express';
+import { Logger } from 'winston';
+import { AppConfigService } from '../config';
 export declare class RequestDurationMiddleware implements NestMiddleware {
     private logger;
     private configService;

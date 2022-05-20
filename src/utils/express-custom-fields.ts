@@ -1,7 +1,4 @@
-export type GraphqlOperationType =
-  | 'query'
-  | 'mutation'
-  | 'subscription';
+export type GraphqlOperationType = 'query' | 'mutation' | 'subscription';
 export interface GraphqlOperation {
   operationName: string;
   operationType: GraphqlOperationType;
@@ -10,8 +7,6 @@ export interface GraphqlOperation {
 
 declare global {
   namespace Express {
-    interface Request {
-      graphql?: GraphqlOperation;
-    }
+    interface Request {}
   }
 }

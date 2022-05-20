@@ -1,14 +1,19 @@
-import { Module } from "@nestjs/common";
-import { KnexModule } from "nestjs-knex";
-import { knexLoadConfig } from "../utils/knex.load.config";
-import { DalService } from "./dal.service";
+import { Module } from '@nestjs/common';
+import { MongooseModule } from '@nestjs/mongoose';
+import { AppConfigModule, AppConfigService } from '../config';
+import { DalService } from './dal.service';
 
 @Module({
   imports: [
-    KnexModule.forRootAsync({
-      useFactory: () => {
-        return { config: knexLoadConfig() };
+    MongooseModule.forRootAsync({
+      imports: [AppConfigModule],
+      useFactory: async (configService: AppConfigService) => {
+        const config = configService.getConfig();
+        return {
+          uri: config.mongo.uri,
+        };
       },
+      inject: [AppConfigService],
     }),
   ],
   providers: [DalService],

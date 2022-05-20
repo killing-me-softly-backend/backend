@@ -8,18 +8,23 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.DalModule = void 0;
 const common_1 = require("@nestjs/common");
-const nestjs_knex_1 = require("nestjs-knex");
-const knex_load_config_1 = require("../utils/knex.load.config");
+const mongoose_1 = require("@nestjs/mongoose");
+const config_1 = require("../config");
 const dal_service_1 = require("./dal.service");
 let DalModule = class DalModule {
 };
 DalModule = __decorate([
     (0, common_1.Module)({
         imports: [
-            nestjs_knex_1.KnexModule.forRootAsync({
-                useFactory: () => {
-                    return { config: (0, knex_load_config_1.knexLoadConfig)() };
+            mongoose_1.MongooseModule.forRootAsync({
+                imports: [config_1.AppConfigModule],
+                useFactory: async (configService) => {
+                    const config = configService.getConfig();
+                    return {
+                        uri: config.mongo.uri,
+                    };
                 },
+                inject: [config_1.AppConfigService],
             }),
         ],
         providers: [dal_service_1.DalService],

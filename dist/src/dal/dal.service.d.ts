@@ -1,9 +1,9 @@
-import { Knex } from "knex";
-import { Logger } from "winston";
-import { AppConfigService } from "../config/app.config.service";
+import { Connection } from 'mongoose';
+import { Logger } from 'winston';
+import { AppConfigService } from '../config';
 export declare class DalService {
     private logger;
-    readonly knex: Knex;
+    private connection;
     private configService;
-    constructor(logger: Logger, knex: Knex, configService: AppConfigService);
+    constructor(logger: Logger, connection: Connection, configService: AppConfigService);
 }

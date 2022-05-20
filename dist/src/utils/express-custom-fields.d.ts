@@ -7,7 +7,6 @@ export interface GraphqlOperation {
 declare global {
     namespace Express {
         interface Request {
-            graphql?: GraphqlOperation;
         }
     }
 }

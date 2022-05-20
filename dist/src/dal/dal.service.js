@@ -14,26 +14,24 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.DalService = void 0;
 const common_1 = require("@nestjs/common");
-const knex_1 = require("knex");
+const mongoose_1 = require("@nestjs/mongoose");
+const mongoose_2 = require("mongoose");
 const nest_winston_1 = require("nest-winston");
-const nestjs_knex_1 = require("nestjs-knex");
-const app_config_service_1 = require("../config/app.config.service");
-const knex_logger_1 = require("../utils/knex.logger");
+const config_1 = require("../config");
 let DalService = class DalService {
-    constructor(logger, knex, configService) {
+    constructor(logger, connection, configService) {
         this.logger = logger;
-        this.knex = knex;
+        this.connection = connection;
         this.configService = configService;
         const config = this.configService.getConfig();
-        const kenxLogging = config.kenx.logging;
-        (0, knex_logger_1.knexLogger)(this.knex, this.logger, kenxLogging.everySql, kenxLogging.bindings);
     }
 };
 DalService = __decorate([
     (0, common_1.Injectable)(),
     __param(0, (0, common_1.Inject)(nest_winston_1.WINSTON_MODULE_PROVIDER)),
-    __param(1, (0, nestjs_knex_1.InjectKnex)()),
-    __metadata("design:paramtypes", [Object, Function, app_config_service_1.AppConfigService])
+    __param(1, (0, mongoose_1.InjectConnection)()),
+    __metadata("design:paramtypes", [Object, mongoose_2.Connection,
+        config_1.AppConfigService])
 ], DalService);
 exports.DalService = DalService;
 //# sourceMappingURL=dal.service.js.map
