@@ -3,3 +3,4 @@ export class CreateEventDto {
   readonly timestamp: string;
   readonly results: string[];
 }
+
