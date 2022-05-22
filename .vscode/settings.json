@@ -1,6 +1,0 @@
-{
-  "typescript.preferences.importModuleSpecifier": "relative",
-  "files.autoSave": "afterDelay",
-  "files.autoSaveDelay": 1000,
-  "cSpell.diagnosticLevel": "Hint"
-}

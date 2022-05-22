@@ -6,6 +6,7 @@ import { AppConfigModule, AppConfigService } from './config';
 import { CatsModule } from './entities/cats/cats.module';
 import { FeelingsModule } from './entities/feelings/feelings.module';
 import { loggerOptionsFactory } from './logger';
+import { SpeechToTextModule } from './speech-to-text/speech.to.text.module';
 
 @Module({
   imports: [
@@ -28,6 +29,7 @@ import { loggerOptionsFactory } from './logger';
     }),
     CatsModule,
     FeelingsModule,
+    SpeechToTextModule,
   ],
 })
 export class AppModule {
