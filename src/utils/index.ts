@@ -7,4 +7,6 @@ export * from './express-request-duration';
 export * from './getDurationInMilliseconds';
 export * from './is.prod';
 export * from './mapFromArray';
+export * from './mongoose.tojson.basic';
+export * from './mongoose.transform.basic';
 export * from './randomIntFromInterval';

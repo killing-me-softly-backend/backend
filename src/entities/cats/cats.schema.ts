@@ -1,9 +1,12 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
+import { mongooseToJsonBasic } from '../../utils';
 
 export type CatDocument = Cat & Document;
 
-@Schema()
+@Schema({
+  ...mongooseToJsonBasic,
+})
 export class Cat {
   @Prop()
   id: string;

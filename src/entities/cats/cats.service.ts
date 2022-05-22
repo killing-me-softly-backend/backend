@@ -11,13 +11,7 @@ export class CatsService {
   ) {}
 
   async create(createCatDto: CreateCatDto): Promise<Cat> {
-    const createdCat = await this.catModel.create(createCatDto);
-    return {
-      age: createdCat.age,
-      breed: createdCat.breed,
-      name: createdCat.name,
-      id: createdCat.id,
-    };
+    return this.catModel.create(createCatDto);
   }
 
   async findAll(): Promise<Cat[]> {
