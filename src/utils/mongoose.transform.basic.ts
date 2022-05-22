@@ -1,5 +1,10 @@
 export function monggoseTransformBasic(doc, ret) {
-  ret.id = ret._id;
-  delete ret._id;
-  delete ret.__v;
+  return transformId(ret);
+}
+
+export function transformId(doc) {
+  doc.id = doc._id.toString();
+  delete doc._id;
+  delete doc.__v;
+  return doc;
 }
