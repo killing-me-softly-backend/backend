@@ -1,3 +1,4 @@
 node_modules
 dist
-gcp.credentials.json
+gcp.credentials.*
+.vscode/launch.json

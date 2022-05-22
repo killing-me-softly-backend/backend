@@ -11,7 +11,10 @@
       "smartStep": true,
       "console": "internalConsole",
       "outputCapture": "std",
-      "internalConsoleOptions": "openOnFirstSessionStart"
+      "internalConsoleOptions": "openOnFirstSessionStart",
+      "env": {
+        "GOOGLE_APPLICATION_CREDENTIALS": "/home/eyal/dev/killing-me-softly-backend/gcp.credentials.json"
+      }
     }
   ]
 }
