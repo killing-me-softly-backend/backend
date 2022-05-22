@@ -1,9 +1,10 @@
 import { MiddlewareConsumer, Module } from '@nestjs/common';
+import { MongooseModule } from '@nestjs/mongoose';
 import { json } from 'express';
 import { WinstonModule } from 'nest-winston';
 import { AppConfigModule, AppConfigService } from './config';
-import { DalModule } from './dal/dal.module';
 import { CatsModule } from './entities/cats/cats.module';
+import { FeelingsModule } from './entities/feelings/feelings.module';
 import { loggerOptionsFactory } from './logger';
 
 @Module({
@@ -15,8 +16,18 @@ import { loggerOptionsFactory } from './logger';
       },
       inject: [AppConfigService],
     }),
-    DalModule,
+    MongooseModule.forRootAsync({
+      imports: [AppConfigModule],
+      useFactory: async (configService: AppConfigService) => {
+        const config = configService.getConfig();
+        return {
+          uri: config.mongo.uri,
+        };
+      },
+      inject: [AppConfigService],
+    }),
     CatsModule,
+    FeelingsModule,
   ],
 })
 export class AppModule {
