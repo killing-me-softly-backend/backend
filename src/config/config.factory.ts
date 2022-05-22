@@ -8,13 +8,16 @@ export const configFactory: ConfigFactory<{ config: Configuration }> = () => {
         port: envToNumberOrDefault('SERVER_PORT', 3500),
       },
       logger: {
-        level: envToStringOrDefault('LOGGER_LEVEL', 'debug'),
+        level: envToStringOrDefault('LOGGER_LEVEL', 'info'),
       },
       mongo: {
         uri: envToStringOrDefault(
           'MONGO_URI',
           'mongodb://localhost/killing-me-softly'
         ),
+      },
+      auth: {
+        jwtExpireTime: envToStringOrDefault('AUTH_JWT_EXPIRE_TIME', '24h'),
       },
     },
   };
@@ -29,8 +32,14 @@ export interface LoggerConfig {
 export interface MongoConfig {
   uri: string;
 }
+
+export interface AuthConfig {
+  jwtExpireTime: string;
+}
+
 export interface Configuration {
   server: ServerConfig;
   logger: LoggerConfig;
   mongo: MongoConfig;
+  auth: AuthConfig;
 }
