@@ -13,6 +13,7 @@ import { SupportersModule } from './entities/supporters/supporters.module';
 import { loggerOptionsFactory } from './logger';
 import { SpeechToTextModule } from './speech-to-text/speech.to.text.module';
 import cors from 'cors'; 
+import { TextAnalysisModule } from './text-analysis/text.analysis.module';
 import { UsersModule } from './users/users.module';
 
 @Module({
@@ -38,6 +39,7 @@ import { UsersModule } from './users/users.module';
     CatsModule,
     FeelingsModule,
     SpeechToTextModule,
+    TextAnalysisModule,
     AuthModule,
     UsersModule,
     SupportersModule,
