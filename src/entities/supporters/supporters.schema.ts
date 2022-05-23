@@ -18,7 +18,7 @@ export class Supporter {
   phone_number: string;
 
   @Prop()
-  contact_id: string;
+  telegram_user: string;
 
 }
 
