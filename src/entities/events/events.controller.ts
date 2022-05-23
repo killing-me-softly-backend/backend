@@ -1,30 +1,30 @@
 import { Body, Controller, Delete, Get, Param, Post } from '@nestjs/common';
-import { CreateEventDto } from './create.event.dto';
-import { EventsService } from './events.service';
-import { Event } from './events.schema';
+import { CreateDiaryEventDto } from './create.event.dto';
+import { DiaryEventsService } from './events.service';
+import { DiaryEvent } from './events.schema';
 
-@Controller('events')
-export class EventsController {
-  constructor(private readonly eventsService: EventsService) {}
+@Controller('diaryEvents')
+export class DiaryEventsController {
+  constructor(private readonly diaryEventsService: DiaryEventsService) {}
 
   @Post()
-  async create(@Body() CreateEventDto: CreateEventDto) {
-    return this.eventsService.create(CreateEventDto);
+  async create(@Body() CreateDiaryEventDto: CreateDiaryEventDto) {
+    return this.diaryEventsService.create(CreateDiaryEventDto);
   }
 
   @Get()
-  async findAll(): Promise<Event[]> {
-    return this.eventsService.findAll();
+  async findAll(): Promise<DiaryEvent[]> {
+    return this.diaryEventsService.findAll();
   }
 
   @Get(':id')
-  async findOne(@Param('id') id: string): Promise<Event> {
-    return this.eventsService.findOne(id);
+  async findOne(@Param('id') id: string): Promise<DiaryEvent> {
+    return this.diaryEventsService.findOne(id);
   }
 
   @Delete(':id')
   async delete(@Param('id') id: string) {
     debugger;
-    return this.eventsService.delete(id);
+    return this.diaryEventsService.delete(id);
   }
 }
