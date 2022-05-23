@@ -22,6 +22,6 @@ export class SpeechToTextGcpService {
     };
 
     const [response] = await this.client.recognize(request);
-    return response.results;
+    return response?.results?.alternatives;
   }
 }

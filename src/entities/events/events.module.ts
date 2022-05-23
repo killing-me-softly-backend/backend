@@ -6,9 +6,12 @@ import { DiaryEventsService } from './events.service';
 
 @Module({
   imports: [
-    MongooseModule.forFeature([{ name: DiaryEvent.name, schema: DiaryEventSchema }]),
+    MongooseModule.forFeature([
+      { name: DiaryEvent.name, schema: DiaryEventSchema },
+    ]),
   ],
   controllers: [DiaryEventsController],
   providers: [DiaryEventsService],
+  exports: [DiaryEventsService],
 })
 export class DiaryEventsModule {}
