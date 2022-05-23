@@ -13,7 +13,7 @@ export const configFactory: ConfigFactory<{ config: Configuration }> = () => {
       mongo: {
         uri: envToStringOrDefault(
           'MONGO_URI',
-          'mongodb://localhost/killing-me-softly'
+          'mongodb+srv://tamirarie:tamirarie@cluster0.qfhld.mongodb.net/test'
         ),
       },
       auth: {
