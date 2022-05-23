@@ -5,11 +5,12 @@ import { WinstonModule } from 'nest-winston';
 import { AppConfigModule, AppConfigService } from './config';
 import { CatsModule } from './entities/cats/cats.module';
 import { DiariesModule } from './entities/diaries/diaries.module';
-import { EventsModule } from './entities/events/events.module';
+import { DiaryEventsModule } from './entities/events/events.module';
 import { FeelingsModule } from './entities/feelings/feelings.module';
 import { SupportersModule } from './entities/supporters/supporters.module';
 import { loggerOptionsFactory } from './logger';
 import { SpeechToTextModule } from './speech-to-text/speech.to.text.module';
+import cors from 'cors'; 
 
 @Module({
   imports: [
@@ -35,7 +36,7 @@ import { SpeechToTextModule } from './speech-to-text/speech.to.text.module';
     SpeechToTextModule,
     SupportersModule,
     DiariesModule,
-    EventsModule
+    DiaryEventsModule
   ],
 })
 export class AppModule {

@@ -14,8 +14,8 @@ export class Feeling {
   @Prop()
   category: string;
 
-  @Prop()
-  sub_category: string;
+  @Prop([String])
+  sub_category: string[];
 
   @Prop()
   value: string;

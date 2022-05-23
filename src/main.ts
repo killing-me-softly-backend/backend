@@ -10,6 +10,7 @@ async function bootstrap() {
   let logger: Logger;
   try {
     app = await NestFactory.create(AppModule);
+    app.enableCors();
     logger = app.get<Logger>(WINSTON_MODULE_PROVIDER);
     const port = app.get(AppConfigService).getConfig().server.port;
     await app.listen(port);

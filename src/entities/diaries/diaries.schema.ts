@@ -1,6 +1,7 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
 import { mongooseToJsonBasic } from '../../utils';
+import { DiaryEvent } from '../events/events.schema';
 
 export type DiaryDocument = Diary & Document;
 
@@ -17,8 +18,8 @@ export class Diary {
   @Prop()
   user: string;
 
-  @Prop()
-  events: Event[];
+  @Prop([DiaryEvent])
+  events: DiaryEvent[];
 
 }
 
