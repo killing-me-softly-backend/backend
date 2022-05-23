@@ -15,6 +15,9 @@ export class Diary {
   display_name: string;
 
   @Prop()
+  user: string;
+
+  @Prop()
   events: Event[];
 
 }
