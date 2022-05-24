@@ -23,12 +23,17 @@ jobs:
           node-version: 14.x
           cache: 'npm'
       - run: npm install
-      - run: touch test
+      - run: npm build
+      - name: Create file
+        run: echo "$GOOGLE_CREDS_JSON" > dist/gcp.credentials.json
+        env:
+          GOOGLE_CREDS_JSON: ${{GOOGLE_CREDS_JSON}}
       - uses: akhileshns/heroku-deploy@v3.12.12 # This is the action
         with:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
           heroku_app_name: ${{secrets.HEROKU_APP_NAME}} #Must be unique in Heroku
           heroku_email: ${{secrets.HEROKU_EMAIL}}
+          procfile: "web: npm run start:prod"
         env:
           HD_MONGO_URI: ${{secrets.MONGO_URI}}
           HD_LOGGER_LEVEL: info
