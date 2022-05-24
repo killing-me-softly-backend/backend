@@ -42,6 +42,7 @@ jobs:
           heroku_app_name: ${{secrets.HEROKU_APP_NAME}} #Must be unique in Heroku
           heroku_email: ${{secrets.HEROKU_EMAIL}}
           appdir: "dist" # <- This will point to the dist folder in your project
+      - run: ls -l
         env:
           MONGO_URI: ${{secrets.MONGO_URI}}
           SERVER_PORT: 3500
