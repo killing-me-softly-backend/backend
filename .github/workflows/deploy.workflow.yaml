@@ -23,8 +23,8 @@ jobs:
           node-version: 14.x
           cache: 'npm'
       - run: npm install
+      - run: touch test
       - uses: akhileshns/heroku-deploy@v3.12.12 # This is the action
-        run: touch test
         with:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
           heroku_app_name: ${{secrets.HEROKU_APP_NAME}} #Must be unique in Heroku
