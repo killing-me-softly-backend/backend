@@ -22,11 +22,11 @@ export class TextAnalysisService {
   }
 
 
-  async extarxtsentiments(text: string[]): Promise<string> {
-    const dict = {}, filterd_dict ={}
+  public extarxtsentiments(text: string[]): string[] {
+    const filterd=[]
     const uri = "https://hebrew-nlp.co.il/service/Morphology/Normalize"
     const personal_token = "JhZHmfdMYgtOaR5";
-    const response = await fetch(uri, {
+    const response = fetch(uri, {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({
@@ -35,18 +35,13 @@ export class TextAnalysisService {
         "type": "SEARCH"
     })});
 
-    let data = await response.json()[0];
+    let data = response.json()[0];
     // Remove nikud
     data = data.join(' ').replace(/[\u0591-\u05C7]/g, '')
-    //Change to words
-    data.split(' ').forEach((word) => {
-      const numberOfOccurrences = data.join(' ').match(new RegExp(word, "g")).length
-      dict[word] = numberOfOccurrences 
+    data.split(' ').foreach(function (word){
+      if (this.getwhitelist().indexOf(word) > -1)
+        filterd.push(word)
     })
-    for (let key in dict) {
-      if (this.getwhitelist().indexOf(key) > -1)
-        filterd_dict[key] = dict[key]
-    }
-    return JSON.stringify(filterd_dict)
+    return filterd
   }
 }

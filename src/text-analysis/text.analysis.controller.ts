@@ -1,13 +1,21 @@
 import { Controller, Get, Query } from '@nestjs/common';
 import { TextAnalysisService } from './text.analysis.service';
-
+import { DiaryEventsService } from 'src/entities/events/events.service';
 @Controller('ta')
 export class TextAnalysisController {
-  constructor(private readonly taService:TextAnalysisService) {}
-  @Get('byUri')
-  async findOne(@Query() query: { uri: string }):  Promise<string> {
+  constructor(
+    private readonly taService: TextAnalysisService,
+    private readonly diaryEventService: DiaryEventsService
+  ) {}
+
+  @Get('')
+  async findOne(
+    @Query() query: { uri: string; event_id: string }
+  ): Promise<{ status: boolean }> {
     const url = decodeURIComponent(query.uri);
-    console.log(url);
-    return this.taService.extarxtsentiments(["אני","אאהרוג","אותך"]);
+    const event_id = query.event_id;
+    const offensive_words = this.taService.extarxtsentiments(["אני","אאהרוג","אותך"]);
+    await this.diaryEventService.update(event_id, { offensive_words });
+    return { status: true };
   }
 }
