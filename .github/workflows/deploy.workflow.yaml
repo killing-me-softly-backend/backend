@@ -33,3 +33,4 @@ jobs:
           MONGO_URI: ${{secrets.MONGO_URI}}
           SERVER_PORT: 3500
           LOGGER_LEVEL: info
+          NPM_CONFIG_PRODUCTION: false
