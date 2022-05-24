@@ -15,6 +15,8 @@ import { SpeechToTextModule } from './speech-to-text/speech.to.text.module';
 import cors from 'cors'; 
 import { TextAnalysisModule } from './text-analysis/text.analysis.module';
 import { UsersModule } from './users/users.module';
+import { QuestionsModule } from './entities/questions/questions.module';
+import { AnswersModule } from './entities/answers/answers.module';
 
 @Module({
   controllers: [AppController],
@@ -44,7 +46,9 @@ import { UsersModule } from './users/users.module';
     UsersModule,
     SupportersModule,
     DiariesModule,
-    DiaryEventsModule
+    DiaryEventsModule,
+    QuestionsModule,
+    // AnswersModule deprecated for now
   ],
 })
 export class AppModule {

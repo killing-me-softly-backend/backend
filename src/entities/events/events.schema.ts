@@ -13,7 +13,7 @@ export class DiaryEvent {
   @Prop()
   id: string;
 
-  @Prop({ type: Date})
+  @Prop({ type: Date })
   timestamp: Date;
 
   @Prop([QuestionnaireItem])
@@ -24,20 +24,18 @@ export class DiaryEvent {
 
   @Prop()
   video: MediaEvent;
-  
+
   @Prop()
   audio: MediaEvent;
 
-  @Prop()
-  audio_trancsribe: string;
+  @Prop([String])
+  audio_trancsribe: string[];
 
   @Prop([String])
   offensive_words: string[];
 
   @Prop()
   free_text: string;
-
-
 }
 
 export const DiaryEventSchema = SchemaFactory.createForClass(DiaryEvent);

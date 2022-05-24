@@ -1,17 +1,30 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-import { CreateDiaryEventDto } from './create.event.dto';
-import { DiaryEventDocument,DiaryEvent } from './events.schema';
+import { CreateDiaryEventDto, UpdateDiaryEventDto } from './create.event.dto';
+import { DiaryEvent, DiaryEventDocument } from './events.schema';
 
 @Injectable()
 export class DiaryEventsService {
   constructor(
-    @InjectModel(DiaryEvent.name) private readonly diaryEventModel: Model<DiaryEventDocument>
+    @InjectModel(DiaryEvent.name)
+    private readonly diaryEventModel: Model<DiaryEventDocument>
   ) {}
 
   async create(createDiaryEventDto: CreateDiaryEventDto): Promise<DiaryEvent> {
-    return this.diaryEventModel.create(createDiaryEventDto);
+    return this.diaryEventModel.create({
+      createDiaryEventDto,
+      timestamp: Date.now(),
+    });
+  }
+
+  async update(
+    event_id: string,
+    updateDiaryEventDto: UpdateDiaryEventDto
+  ): Promise<DiaryEvent> {
+    return this.diaryEventModel
+      .findOneAndUpdate({ id: event_id }, updateDiaryEventDto, { new: true })
+      .exec();
   }
 
   async findAll(): Promise<DiaryEvent[]> {
