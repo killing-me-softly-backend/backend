@@ -5,9 +5,9 @@ import { TextAnalysisService } from './text.analysis.service';
 export class TextAnalysisController {
   constructor(private readonly taService:TextAnalysisService) {}
   @Get('byUri')
-  async findOne(@Query() query: { uri: string }):  Promise<Array<[string,number]>> {
+  async findOne(@Query() query: { uri: string }):  Promise<string> {
     const url = decodeURIComponent(query.uri);
     console.log(url);
-    return this.taService.extarxtsentiments(["hurting", "people", "is", "bad"]);
+    return this.taService.extarxtsentiments(["אני","אאהרוג","אותך"]);
   }
 }
