@@ -27,7 +27,7 @@ jobs:
       - name: Create file
         run: echo "$GOOGLE_CREDS_JSON" > dist/gcp.credentials.json
         env:
-          GOOGLE_CREDS_JSON: ${{GOOGLE_CREDS_JSON}}
+          GOOGLE_CREDS_JSON: ${{secret.GOOGLE_CREDS_JSON}}
       - uses: akhileshns/heroku-deploy@v3.12.12 # This is the action
         with:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
