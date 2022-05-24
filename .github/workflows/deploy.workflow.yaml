@@ -2,6 +2,8 @@ name: Deploy on Heroku
 
 # trigger condition for the action
 on:
+  push:
+      branches: ["master"]
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
       
@@ -9,4 +11,14 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v2
+      - uses: akhileshns/heroku-deploy@v3.12.12 # This is the action
+        with:
+          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+          heroku_app_name: ${{secrets.HEROKU_APP_NAME}} #Must be unique in Heroku
+          heroku_email: ${{secrets.HEROKU_EMAIL}}
+          appdir: "dist" # <- This will point to the api folder in your project
+        env:
+          MONGO_URI: ${{secrets.MONGO_URI}}
+          SERVER_PORT: 3500
+          LOGGER_LEVEL: info
