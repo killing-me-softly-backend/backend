@@ -31,7 +31,5 @@ jobs:
           heroku_email: ${{secrets.HEROKU_EMAIL}}
         env:
           HD_MONGO_URI: ${{secrets.MONGO_URI}}
-          HD_SERVER_PORT: ${{secrets.PORT}}
           HD_LOGGER_LEVEL: info
           HD_NPM_CONFIG_PRODUCTION: false
-          HD_PORT: ${{secrets.PORT}}
