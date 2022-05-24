@@ -48,7 +48,7 @@ import { AnswersModule } from './entities/answers/answers.module';
     DiariesModule,
     DiaryEventsModule,
     QuestionsModule,
-    AnswersModule
+    // AnswersModule deprecated for now
   ],
 })
 export class AppModule {
