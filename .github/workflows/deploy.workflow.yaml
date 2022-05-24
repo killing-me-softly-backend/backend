@@ -23,7 +23,7 @@ jobs:
           node-version: 14.x
           cache: 'npm'
       - run: npm install
-      - run: npm build
+      - run: npm run build
       - name: Create file
         run: echo "$GOOGLE_CREDS_JSON" > dist/gcp.credentials.json
         env:
