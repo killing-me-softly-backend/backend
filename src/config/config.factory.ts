@@ -5,7 +5,7 @@ export const configFactory: ConfigFactory<{ config: Configuration }> = () => {
   return {
     config: {
       server: {
-        port: envToNumberOrDefault('SERVER_PORT', 3500),
+        port: envToNumberOrDefault('SERVER_PORT', 8080),
       },
       logger: {
         level: envToStringOrDefault('LOGGER_LEVEL', 'info'),

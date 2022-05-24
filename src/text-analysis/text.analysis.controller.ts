@@ -8,12 +8,13 @@ export class TextAnalysisController {
     private readonly diaryEventService: DiaryEventsService
   ) {}
 
-  @Get('')
+  @Get('anal')
   async findOne(
     @Query() query: { uri: string; event_id: string }
   ): Promise<{ status: boolean }> {
-    const url = decodeURIComponent(query.uri);
+    const text = decodeURIComponent(query.uri);
     const event_id = query.event_id;
+    //const offensive_words = this.taService.extarxtsentiments(text.split(" "));
     const offensive_words = this.taService.extarxtsentiments(["אני","אאהרוג","אותך"]);
     await this.diaryEventService.update(event_id, { offensive_words });
     return { status: true };
