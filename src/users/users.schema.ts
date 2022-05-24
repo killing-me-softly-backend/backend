@@ -21,6 +21,22 @@ export class User {
 
   @Prop()
   isAdmin: boolean;
+
+  @Prop()
+  phone: string;
+
+  @Prop()
+  address: string;
+
+  @Prop()
+  number_of_children: number;
+
+  @Prop()
+  relationship_time: number;
+  
+  @Prop()
+  age: number;
+
 }
 
 export const UserSchema = SchemaFactory.createForClass(User);
